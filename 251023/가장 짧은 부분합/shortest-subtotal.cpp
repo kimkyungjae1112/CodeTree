@@ -36,7 +36,7 @@ int main()
 
     }   
 
-    if(Answer == 0){
+    if(Answer == numeric_limits<int>::max()){
         cout << -1;
         return 0;
     }
