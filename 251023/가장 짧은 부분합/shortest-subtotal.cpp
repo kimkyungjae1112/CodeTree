@@ -36,6 +36,10 @@ int main()
 
     }   
 
+    if(Answer == 0){
+        cout << -1;
+        return 0;
+    }
     cout << Answer;
     return 0;
 }
