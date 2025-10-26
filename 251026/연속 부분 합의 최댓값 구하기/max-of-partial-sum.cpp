@@ -25,7 +25,12 @@ int main()
         DP[i] = max(A[i], DP[i-1] + A[i]);
     }
 
-    cout << DP[N-1];
+    int Max = -1001;
+    for(int i = 0; i < N; ++i)
+    {
+        Max = max(Max, DP[i]);
+    }
+    cout << Max;
 
     return 0;
 }
