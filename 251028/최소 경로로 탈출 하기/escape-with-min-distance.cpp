@@ -43,7 +43,7 @@ int main()
             int X = Cur.first + dx[i];
             int Y = Cur.second + dy[i];
 
-            if(X < 0 || X >= N || Y < 0 || Y >= N) continue;
+            if(X < 0 || X >= N || Y < 0 || Y >= M) continue;
             if(Grid[X][Y] == 0)
             {
                 continue;
