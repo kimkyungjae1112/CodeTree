@@ -1,7 +1,8 @@
 #include <iostream>
 #include <queue>
+#include <limits>
 using namespace std;
-
+const int MIN = numeric_limits<int>::max();
 int N, M;
 int Grid[100][100];
 int Dist[100][100];
@@ -20,6 +21,14 @@ int main()
         }
     }
 
+    for(int i = 0; i < N; ++i)
+    {
+        for(int j = 0; j < M; ++j)
+        {
+            Dist[i][j] = MIN;
+        }
+    }
+
     queue<pair<int, int>> Q;
     Q.push({0,0});
     Dist[0][0] = 0;
@@ -35,7 +44,11 @@ int main()
             int Y = Cur.second + dy[i];
 
             if(X < 0 || X >= N || Y < 0 || Y >= N) continue;
-            if(Grid[X][Y] == 0 || Dist[X][Y] != 0)
+            if(Grid[X][Y] == 0)
+            {
+                continue;
+            }
+            if(Dist[X][Y] != MIN)
             {
                 Dist[X][Y] = min(Dist[X][Y], Dist[Cur.first][Cur.second] + 1);
                 continue;
@@ -46,7 +59,9 @@ int main()
         }
     }
 
-    if(Dist[N-1][M-1] == 0) cout << -1;
+    if(Dist[N-1][M-1] == MIN) cout << -1;
     else cout << Dist[N-1][M-1];
+
+    
     return 0;
 }
